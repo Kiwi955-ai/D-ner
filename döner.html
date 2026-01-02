@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yigido Döner - Herzogenaurach</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .badges {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #c41e3a;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(196, 30, 58, 0.2);
+        }
+
+        .info-card h3 {
+            color: #c41e3a;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            font-size: 1.3em;
+        }
+
+        .opening-hours {
+            background: #f8f9fa;
+        }
+
+        .hours-list {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hour-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: white;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .hour-row.closed {
+            opacity: 0.6;
+        }
+
+        .day {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .time {
+            color: #c41e3a;
+            font-weight: 500;
+        }
+
+        .reviews {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid #c41e3a;
+        }
+
+        .stars {
+            color: #ffa41b;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .contact-section {
+            background: #c41e3a;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #c41e3a;
+        }
+
+        .btn-primary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #c41e3a;
+        }
+
+        .map-container {
+            margin-top: 40px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .tagline {
+                font-size: 1.1em;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>🥙 Yigido Döner</h1>
+            <p class="tagline">Authentisch. Frisch. Selbstgebacken.</p>
+            <div class="badges">
+                <span class="badge">✨ Sehr Sauber</span>
+                <span class="badge">🔥 Sehr Lecker</span>
+                <span class="badge">🍞 Selbst Gebacken</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="section opening-hours">
+        <div class="container">
+            <h2 class="section-title">Öffnungszeiten</h2>
+            <div class="hours-list">
+                <div class="hour-row">
+                    <span class="day">Montag</span>
+                    <span class="time">10:00 - 19:00 Uhr</span>
+                </div>
+                <div class="hour-row">
+                    <span class="day">Dienstag</span>
+                    <span class="time">10:00 - 19:00 Uhr</span>
+                </div>
+                <div class="hour-row">
+                    <span class="day">Mittwoch</span>
+                    <span class="time">10:00 - 19:00 Uhr</span>
+                </div>
+                <div class="hour-row">
+                    <span class="day">Donnerstag</span>
+                    <span class="time">10:00 - 19:00 Uhr</span>
+                </div>
+                <div class="hour-row">
+                    <span class="day">Freitag</span>
+                    <span class="time">10:00 - 19:00 Uhr</span>
+                </div>
+                <div class="hour-row">
+                    <span class="day">Samstag</span>
+                    <span class="time">10:00 - 17:00 Uhr</span>
+                </div>
+                <div class="hour-row closed">
+                    <span class="day">Sonntag</span>
+                    <span class="time">Geschlossen</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section contact-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Besuchen Sie Uns</h2>
+            <p style="font-size: 1.2em; margin-bottom: 10px;">📍 Ohmstraße 3, 91074 Herzogenaurach</p>
+            <p style="font-size: 1.2em; margin-bottom: 30px;">📞 +49 173 9195551</p>
+            
+            <div class="contact-buttons">
+                <a href="tel:+4917391955551" class="btn btn-primary">
+                    📞 Jetzt Anrufen
+                </a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Ohmstraße+3,+91074+Herzogenaurach" target="_blank" class="btn btn-secondary">
+                    🗺️ Route Planen
+                </a>
+            </div>
+
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2597.9!2d10.885!3d49.566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDMzJzU3LjYiTiAxMMKwNTMnMDYuMCJF!5e0!3m2!1sde!2sde!4v1234567890"
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="section reviews">
+        <div class="container">
+            <h2 class="section-title">Das Sagen Unsere Kunden</h2>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"Sehr sauber, sehr lecker, sehr sympathisch. Alles super danke yigido doner!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"Von mir volle 5 Sterne, alleine schon weil dort Brot, Pide etc. noch selbst gebacken wird. Für mich eine Seltenheit, gerade in Herzi, ich denke der einzige!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"Der Salat beim Döner Teller wird nicht mit Döner Soße ertränkt, sondern klassisch mit Essig, Öl und Granatapfelsirup mariniert - einfach super!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <h2 class="section-title">Warum Yigido Döner?</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span class="icon">🍞</span> Handgemacht</h3>
+                    <p>Unser Brot und Pide werden täglich frisch selbst gebacken - eine Seltenheit in Herzogenaurach!</p>
+                </div>
+                <div class="info-card">
+                    <h3><span class="icon">🥗</span> Frische Zutaten</h3>
+                    <p>Frischer Salat klassisch mit Essig, Öl und Granatapfelsirup mariniert - nicht ertränkt in Soße!</p>
+                </div>
+                <div class="info-card">
+                    <h3><span class="icon">🌶️</span> Authentisch Scharf</h3>
+                    <p>Unsere scharfe Soße ist extrem scharf - für echte Liebhaber!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Yigido Döner. Alle Rechte vorbehalten.</p>
+        <p style="margin-top: 10px; opacity: 0.7;">Meal Takeaway • Restaurant • Food</p>
+    </footer>
+</body>
+</html>
